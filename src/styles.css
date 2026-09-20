@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-background: var(--anvil-bg);
+  --color-foreground: var(--anvil-fg);
+  --color-card: var(--anvil-card);
+  --color-card-foreground: var(--anvil-fg);
+  --color-muted: var(--anvil-surface);
+  --color-muted-foreground: var(--anvil-muted);
+  --color-border: var(--anvil-border);
+  --color-input: var(--anvil-border);
+  --color-primary: var(--anvil-accent);
+  --color-primary-foreground: var(--anvil-accent-fg);
+  --color-secondary: var(--anvil-surface);
+  --color-secondary-foreground: var(--anvil-fg);
+  --color-accent: var(--anvil-surface);
+  --color-accent-foreground: var(--anvil-fg);
+  --color-destructive: var(--anvil-danger);
+  --color-destructive-foreground: #faf7f2;
+  --color-ring: var(--anvil-accent);
+  --color-popover: var(--anvil-card);
+  --color-popover-foreground: var(--anvil-fg);
+  --color-sidebar: var(--anvil-card);
+  --color-ok: var(--anvil-ok);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+:root {
+  --anvil-bg: #f4f1ea;
+  --anvil-card: #fbf9f4;
+  --anvil-surface: #ece8df;
+  --anvil-fg: #16161a;
+  --anvil-muted: #5c5a56;
+  --anvil-subtle: #8a8680;
+  --anvil-border: color-mix(in oklab, #16161a 14%, transparent);
+  --anvil-accent: #0f6e6b;
+  --anvil-accent-fg: #f4f1ea;
+  --anvil-danger: #9b2c2c;
+  --anvil-ok: #276749;
+  color-scheme: light;
+}
+
+html.dark {
+  --anvil-bg: #0e0e10;
+  --anvil-card: #161618;
+  --anvil-surface: #1c1c20;
+  --anvil-fg: #eceae4;
+  --anvil-muted: #a8a59c;
+  --anvil-subtle: #7a776f;
+  --anvil-border: color-mix(in oklab, #eceae4 14%, transparent);
+  --anvil-accent: #7ec9c6;
+  --anvil-accent-fg: #0e0e10;
+  --anvil-danger: #e8a0a0;
+  --anvil-ok: #9ae6b4;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html,
+  body,
+  #app {
+    min-height: 100dvh;
+    background: var(--anvil-bg);
+    color: var(--anvil-fg);
+  }
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--anvil-accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--anvil-accent) 28%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
